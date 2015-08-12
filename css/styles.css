@@ -1,0 +1,281 @@
+@import url(http://fonts.googleapis.com/css?family=Abel|Inconsolata);
+@import url(http: //fonts.googleapis.com/css?family=Playfair+Display:400, 700, 400italic);
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+caption, th, td {
+    text-align: left;
+    font-weight: normal;
+    vertical-align: middle;
+}
+q, blockquote {
+    quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+    content: "";
+    content: none;
+}
+a img {
+    border: none;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html {
+    font-size: 100%;
+    line-height: 1.5em;
+}
+	@media (min-width: 400px) {
+		html {
+		    font-size: 125%;
+		    line-height: 1.5em;
+		}
+	}
+	@media (min-width: 600px) {
+	    html {
+		    font-size: 137.5%;
+		    line-height: 1.5em;
+		}
+	}
+body {
+    color: #555;
+    font-family: 'Inconsolata';
+    font-weight: 400;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Abel';
+    font-weight: 400;
+    color: #333;
+}
+h1 {
+    font-size: 2.441em;
+    line-height: 1.229em;
+}
+h2 {
+    font-size: 1.953em;
+    line-height: 1.5361em;
+    margin-bottom: 0;
+}
+h3 {
+    font-size: 1.563em;
+    line-height: 1.91939em;
+}
+p {
+    margin-bottom: 1.5em;
+}
+	p a {
+	    color: inherit;
+	    border-bottom: 1px solid #555;
+	    text-decoration: none;
+	    transition: all .5s ease;
+	}
+		p a:hover {
+		    color: #00a8e8;
+		    border-bottom: 1px solid #00a8e8;
+		    transition: all .5s ease;
+		}
+
+ol {
+    list-style-type: decimal;
+    margin-bottom: 1.5em;
+    margin-left: 2em;
+}
+
+input[type="range"], select {
+    height: 36px;
+}
+
+input[type="number"], .text-input, select, textarea {
+    font-family: 'Inconsolata';
+    font-weight: 400;
+    margin: 0;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+@media (min-width: 400px) {
+    input[type="number"], .text-input, textarea, select {
+	    font-size: 20px;
+	    line-height: 30px;
+	}
+}
+
+@media (min-width: 600px) {
+    input[type="number"], .text-input, textarea, select {
+	    font-size: 22px;
+	    line-height: 33px;
+	}
+}
+
+.content {
+    padding: 0 10px;
+    margin-bottom: 1.5em;
+}
+	.content h1 {
+	    margin-bottom: 33px;
+	}
+
+	.content p {
+	    margin-bottom: 1.5em;
+	}
+
+.container {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 960px;
+}
+	.container:after {
+	    content: " ";
+	    display: block;
+	    clear: both;
+	}
+
+.hero {
+    text-align: center;
+    text-shadow: 5px 5px 20px #000;
+    background-image: url("../img/stripe_f994c5_99ffb1.png");
+}
+	.hero__title, .hero__subtitle {
+	    color: #fff;
+	    font-family: 'Playfair Display',  serif;
+    	font-weight: 700;
+	}
+	.hero__title {
+	    font-size: 3.63636em;
+	    line-height: 1.2375em;
+	    margin-bottom: 0.4125em;
+	    padding-top: 0.4125em;
+	}
+	.hero__subtitle {
+	    font-size: 1.63636em;
+	    line-height: 1.83333em;
+	    padding-bottom: 0.91667em;
+	}
+
+	@media (max-width: 600px) {
+	    .hero__title {
+		    font-size: 40px;
+		}
+		.hero__subtitle {
+		    font-size: 30px;
+		}
+	}
+
+.button {
+    display: block;
+    width: 100%;
+    float: right;
+    margin: 24px 0 0 0;
+    color: #fff;
+    position: relative;
+    text-align: center;
+    background: #f763aa;
+    border: 1px solid #ccc;
+    -moz-box-shadow: 0px 5px 0 #ccc;
+    -webkit-box-shadow: 0px 5px 0 #ccc;
+    box-shadow: 0px 5px 0 #ccc;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 48px;
+}
+	.button:hover {
+	    background: #f87bb7;
+	    cursor: pointer;
+	    top: 5px;
+	    -moz-box-shadow: 0px 0 0 #333;
+	    -webkit-box-shadow: 0px 0 0 #333;
+	    box-shadow: 0px 0 0 #333;
+	}
+
+.controls {
+    overflow: hidden;
+    zoom: 1;
+    width: 32.20339%;
+    float: left;
+    margin: 0 1.69492% 24px 0;
+    padding: 0 5px 5px 0;
+}
+
+	@media (max-width: 600px) {
+	    .controls {
+		    width: 100%;
+		    float: right;
+		    margin-right: 0;
+		}
+	}
+
+	.controls input, .controls select {
+	    display: block;
+	    width: 100%;
+	    margin: 0;
+	}
+
+	.controls label {
+	    height: 36px;
+	    margin-right: 1.69492%}
+	}
+
+.meters {
+    clear: both;
+    display: block;
+    width: 100%;
+}
+
+#nlevel {
+    text-align: right;
+    font-size: 0.75em;
+    line-height: 2em;
+}
+
+#output {
+    width: 66.10169%;
+    overflow: hidden;
+    margin: 0 0 24px 0;
+}
+	@media (max-width: 600px) {
+	    #output {
+		    width: 100%;
+		    float: right;
+		    margin-right: 0;
+		}
+	}
+
+#outputtext {
+    background-color: #fff;
+    border: 1px solid #141417;
+    height: 432px;
+    overflow: auto;
+}
+	#outputtext p {
+	    margin-bottom: 0em;
+	    padding: 0 5px;
+	}
+
+.paragraph-text {}
+	.paragraph-text ul {
+		list-style: disc;
+		margin-left: 24px;
+	}
+		.paragraph-text ul li {
+			margin-bottom: 1em;
+		}

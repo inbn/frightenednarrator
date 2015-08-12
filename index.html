@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>The Frightened Narrator</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+	<link rel="stylesheet" href="css/styles.css" media="screen" type="text/css" />
+
+</head>
+
+<body>
+
+	<div class="hero">
+		<hgroup>
+			<h1 class="hero__title">The Frightened Narrator</h1>
+		    <h2 class="hero__subtitle">A Markov Chain Storyteller that's afraid of loud noises</h2>
+		</hgroup>
+	</div>
+
+	<div class="container content">
+
+		<div class="controls" id="controls">
+			<h2>Controls</h2>
+			<label for="voice">Voice</label><select name="voice" id="voice"></select>
+			<label for="volume">Volume</label><input type="range" min="0" max="1" step="0.1" name="volume" id="volume" value="1">
+			<label for="rate">Rate</label><input type="range" min="0.1" max="10" step="0.1" name="rate" id="rate" value="1">
+			<label for="pitch">Pitch</label><input type="range" min="0" max="2" step="0.1" name="pitch" id="pitch" value="1">
+			<label for="avalue">Sensitivity</label><input type="number" min="0.01" max="1.0" step="0.01" name="avalue" id="avalue" value="0.1">
+
+			<div id="speak" class="button" onmousedown="speak(output[phraseNo])">Speak</div>
+		</div>
+
+		<div id="output">
+			<h2>Output Text</h2>
+			<div id="outputtext">
+			</div>
+		</div>
+
+		<div class="meters" id="meters">
+			Input Volume:<br>
+			<canvas id="meter" width="600" height="10" style="width:100%; float:right"></canvas>
+			<br>
+			Average Volume for previous 10 seconds:
+			<br>
+			<canvas id="average" width="600" height="10" style="width:100%; float:right"></canvas>
+
+			<div id="nlevel">
+				Current Level: 100
+			</div>
+		</div>
+
+		<div class="paragraph-text">
+
+			<h2>How it works</h2>
+			<p>This program uses nth order <a href="http://en.wikipedia.org/wiki/Markov_chain">Markov chains</a> to create interesting variations on Alice's Adventures in Wonderland by Lewis Carroll.
+			The value of n corresponds to how many previous letters are taken into account when generating new text. It is inversely proportional to the average microphone input volume for a ten second window.
+			The generated text is read aloud using the Speech Synthesis part of the Web Speech API.</p>
+
+			<h2>Instructions</h2>
+			<ul>
+				<li>To prevent the sound of the synthesised voice affecting the volume measurement, it is recommended to wear headphones</li>
+				<li>If the ambient volume of your environment is too high, or your microphone is sensitive, try raising the 'Sensitivity' value. If the inverse is true, try lowering the value</li>
+				<li>Press 'Speak' to begin</li>
+			</ul>
+		</div>
+
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="js/textsources.js"></script>
+	<script src="js/speechgenerator.js"></script>
+
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-58185317-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</body>
+</html>
