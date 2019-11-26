@@ -62,8 +62,8 @@ SOFTWARE.
 window.onload = function() {
 	//split input string at characters: comma, full stop, exclamation mark, question mark, semicolon, colon
 	sourceFile = aliceInWonderland.split(/,|\.|!|\?|;|:/);
-	
-	//remove excess whitespace and apostraphes
+
+	//remove excess whitespace and apostrophes
 	for (var i = 0; i < sourceFile.length; i++) {
 		sourceFile[i] = sourceFile[i].replace(/'/g, '');
 		sourceFile[i] = sourceFile[i].trim();
@@ -80,31 +80,14 @@ window.onload = function() {
     // monkeypatch Web Audio
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
-    // grab an audio context
-    audioContext = new AudioContext();
-
     //fill volumeArray with 0.001 (not zero)
     for (var i; i < volumeArrayLength; i++) {
     	volumeArray.push(0.001);
-    }
-
-    // Attempt to get audio input
-    try {
-        // monkeypatch getUserMedia
-        navigator.getUserMedia = 
-        	navigator.getUserMedia ||
-        	navigator.webkitGetUserMedia ||
-        	navigator.mozGetUserMedia;
-
-        // ask for an audio input
-        navigator.getUserMedia({audio:true}, gotStream, didntGetStream);
-    } catch (e) {
-        alert('getUserMedia threw exception :' + e);
-    }
-
+	}
 }
 
-function didntGetStream() {
+function didntGetStream(error) {
+	console.log(error);
     alert('Stream generation failed. Please try Refreshing the page.');
 }
 
@@ -121,6 +104,23 @@ function gotStream(stream) {
 
     //start calculating average volume
     calcAverage();
+}
+
+function getAudioStream() {
+	// Grab an audio context
+	// Since Chrome 70, an audio context will not work without user interaction
+	// Since this function is triggered by a button press, we can create it here
+	audioContext = new AudioContext();
+
+	navigator.mediaDevices.getUserMedia({ audio: true })
+		.then(function(stream) {
+			/* use the stream */
+			gotStream(stream);
+		})
+		.catch(function(err) {
+			/* handle the error */
+			didntGetStream(err);
+		});
 }
 
 function drawLoop( time ) {
@@ -281,7 +281,7 @@ function generateText(number) {
 		//update the target
 		if (lev > 1) {
 			target = target.substring(1, lev - 1) + chr;
-		}	
+		}
 	}
 	return;
 }
@@ -319,16 +319,16 @@ setTimeout(function () {
 function loadVoices() {
   	// Fetch the available voices.
 	var voices = speechSynthesis.getVoices();
-  
+
  	// Loop through each of the voices.
 	voices.forEach(function(voice, i) {
     	// Create a new option element.
 		var option = document.createElement('option');
-    
+
     	// Set the options value and text.
 		option.value = voice.name;
 		option.innerHTML = voice.name;
-		  
+
     	// Add the option to the voice selector.
 		voiceSelect.appendChild(option);
 	});
@@ -346,26 +346,26 @@ window.speechSynthesis.onvoiceschanged = function(e) {
 function speak(text) {
 	// Create a new instance of SpeechSynthesisUtterance.
 	msg = new SpeechSynthesisUtterance();
-  
+
 	// Set the text.
 	msg.text = text;
 
 	//display the text in the output area
 	outputDiv.innerHTML += "<p>" + text + "</p>";
 	outputDiv.scrollTop = outputDiv.scrollHeight;
-  
+
 	// Set the attributes.
 	msg.volume = parseFloat(volumeInput.value);
 	msg.rate = parseFloat(rateInput.value);
 	msg.pitch = parseFloat(pitchInput.value);
-	
+
 	// If a voice has been selected, find the voice and set the utterance instance's voice attribute.
 	if (voiceSelect.value) {
 		msg.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == voiceSelect.value; })[0];
 	}
-  
+
 	//queue this utterance.
-	window.speechSynthesis.speak(msg);	
+	window.speechSynthesis.speak(msg);
 
 	//generate next phrase
 	if (phraseNo < (sourceFile.length - 1)) {
@@ -374,7 +374,7 @@ function speak(text) {
 				phraseNo++;
 				generateText(phraseNo);
 				speak(output[phraseNo]);
-			},200);		
+			},200);
 		};
 	}
 }

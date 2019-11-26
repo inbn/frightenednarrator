@@ -29,6 +29,7 @@
 			<label for="pitch">Pitch</label><input type="range" min="0" max="2" step="0.1" name="pitch" id="pitch" value="1">
 			<label for="avalue">Sensitivity</label><input type="number" min="0.01" max="1.0" step="0.01" name="avalue" id="avalue" value="0.1">
 
+			<div class="button" onmousedown="getAudioStream()">Get Audio Stream</div>
 			<div id="speak" class="button" onmousedown="speak(output[phraseNo])">Speak</div>
 		</div>
 
@@ -60,6 +61,7 @@
 
 			<h2>Instructions</h2>
 			<ul>
+				<li>First press 'Get Audio Stream' and grant permission to use your Microphone</li>
 				<li>To prevent the sound of the synthesised voice affecting the volume measurement, it is recommended to wear headphones</li>
 				<li>If the ambient volume of your environment is too high, or your microphone is sensitive, try raising the 'Sensitivity' value. If the inverse is true, try lowering the value</li>
 				<li>Press 'Speak' to begin</li>
@@ -71,18 +73,5 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="js/textsources.js"></script>
 	<script src="js/speechgenerator.js"></script>
-
-
-	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-	  ga('create', 'UA-58185317-1', 'auto');
-	  ga('send', 'pageview');
-
-	</script>
-
 </body>
 </html>
